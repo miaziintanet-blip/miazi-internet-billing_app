@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b4b86">
+<title>মিয়াজী ইন্টারনেট | Billing Portal</title>
+<style>
+:root{--navy:#103b63;--blue:#0877c9;--cyan:#13a9b8;--bg:#f3f7fb;--ink:#203448;--muted:#6b7e90;--white:#fff;--green:#168653;--red:#c43d4b;--line:#e2eaf1}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}button,input,select{font:inherit}button{cursor:pointer;border:0}.top{background:linear-gradient(120deg,#103b63,#0877c9);color:white;padding:16px 20px}.topin{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{font-weight:850;font-size:1.25rem}.sub{font-size:.83rem;color:#d9edff}.wrap{max-width:1180px;margin:24px auto;padding:0 16px}.loginbox,.panel,.card{background:white;border:1px solid var(--line);border-radius:16px;box-shadow:0 6px 22px #103b630c}.loginbox{max-width:460px;margin:48px auto;padding:26px}.loginbox h1{margin:0 0 5px;color:var(--navy)}.muted{color:var(--muted)}.field{display:grid;gap:6px;margin:13px 0}.field input,.field select{width:100%;padding:11px 12px;border:1px solid #ccd9e4;border-radius:10px;background:white}.btn{padding:10px 15px;border-radius:10px;background:var(--blue);color:white;font-weight:700}.btn.secondary{background:#eaf3fb;color:var(--navy)}.btn.green{background:var(--green)}.btn.red{background:var(--red)}.btn.small{padding:6px 10px;font-size:.88rem}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.tab{padding:9px 13px;border-radius:9px;background:#e7eff7;color:var(--navy);font-weight:700}.tab.active{background:var(--blue);color:white}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.stat{padding:17px}.stat b{display:block;font-size:1.55rem;color:var(--navy)}.panel{padding:18px;margin:15px 0}.panel h2{margin:0 0 12px;font-size:1.15rem;color:var(--navy)}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.row>*{flex:1}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:620px}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);font-size:.93rem}th{background:#f5f9fc;color:var(--navy)}.pill{display:inline-block;border-radius:30px;padding:3px 9px;font-size:.8rem;font-weight:700;background:#e8f6ef;color:var(--green)}.pill.due{background:#fff1e7;color:#a34b0b}.pill.off{background:#fcebed;color:var(--red)}.notice{background:#fff8e6;border:1px solid #f1dfaa;padding:12px;border-radius:10px;font-size:.9rem;margin:12px 0}.hidden{display:none!important}.right{margin-left:auto}.foot{text-align:center;color:var(--muted);padding:28px 10px;font-size:.85rem}.customerhero{background:linear-gradient(120deg,#103b63,#0877c9);color:white;border-radius:15px;padding:20px;margin:14px 0}.customerhero h2{color:white;margin:0}.empty{text-align:center;padding:24px;color:var(--muted)}@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){.grid{grid-template-columns:1fr 1fr}.wrap{margin:14px auto}.loginbox{margin:24px auto;padding:20px}.topin{align-items:flex-start}.stat{padding:13px}.stat b{font-size:1.25rem}}
+</style>
+</head>
+<body>
+<header class="top"><div class="topin"><div><div class="brand">🌐 মিয়াজী ইন্টারনেট</div><div class="sub">ISP Billing & Customer Portal</div></div><div class="sub">গজারিয়া, ভৈরব, কিশোরগঞ্জ · 01775-485757</div></div></header>
+<main class="wrap">
+<section id="loginView" class="loginbox">
+<h1>Billing Portal</h1><div class="muted">আপনার প্যানেল নির্বাচন করে লগইন করুন</div>
+<div class="tabs"><button class="tab active" id="adminMode" onclick="setMode('admin')">Admin Login</button><button class="tab" id="customerMode" onclick="setMode('customer')">Customer Login</button></div>
+<form id="loginForm">
+<div class="field"><label id="userLabel">Admin Username</label><input id="username" autocomplete="username" required placeholder="Username"></div>
+<div class="field"><label>Password</label><input id="password" type="password" autocomplete="current-password" required placeholder="Password"></div>
+<button class="btn" style="width:100%">লগইন করুন</button>
+</form>
+<div class="notice"><b>ডেমো লগইন</b><br>Admin: <b>admin</b> / <b>Miazi@2026</b><br>Customer ID: <b>MI1001</b> / <b>1234</b><br>এগুলো শুধু পরীক্ষার জন্য—বাস্তব ব্যবহারের আগে নিরাপদ লগইন ব্যবস্থা বসাতে হবে।</div>
+<div id="loginError" class="muted" role="alert"></div>
+</section>
+
+<section id="adminView" class="hidden">
+<div class="row"><div><h1 style="margin:0;color:var(--navy)">Admin Dashboard</h1><div class="muted">মিয়াজী ইন্টারনেট পরিচালনা</div></div><button class="btn secondary right" onclick="logout()">Logout</button></div>
+<nav class="tabs" id="adminTabs">
+<button class="tab active" data-tab="overview">Dashboard</button><button class="tab" data-tab="customers">গ্রাহক</button><button class="tab" data-tab="packages">প্যাকেজ</button><button class="tab" data-tab="billing">বিল ও পেমেন্ট</button>
+</nav>
+<div id="overview" class="adminTab">
+<div class="grid">
+<div class="card stat"><span class="muted">মোট গ্রাহক</span><b id="totalCustomers">0</b></div>
+<div class="card stat"><span class="muted">সক্রিয় সংযোগ</span><b id="activeCustomers">0</b></div>
+<div class="card stat"><span class="muted">মোট বকেয়া</span><b id="totalDue">৳0</b></div>
+<div class="card stat"><span class="muted">এই মাসে আদায়</span><b id="totalPaid">৳0</b></div>
+</div>
+<div class="panel"><h2>সাম্প্রতিক বিল</h2><div id="recentBills"></div></div>
+</div>
+<div id="customers" class="adminTab hidden">
+<div class="panel"><h2>নতুন গ্রাহক যুক্ত করুন</h2>
+<form id="customerForm" class="row">
+<div class="field"><label>গ্রাহকের নাম</label><input name="name" required></div><div class="field"><label>মোবাইল নম্বর</label><input name="phone" required></div><div class="field"><label>ঠিকানা</label><input name="address" required></div>
+<div class="field"><label>প্যাকেজ</label><select name="package" id="customerPackage"></select></div><div class="field"><label>Customer ID</label><input name="id" placeholder="যেমন MI1002" required></div><div class="field"><label>প্রাথমিক পাসওয়ার্ড</label><input name="pass" value="1234" required></div>
+<div class="field"><label>অবস্থা</label><select name="status"><option value="active">সক্রিয়</option><option value="off">বন্ধ</option></select></div><div class="field" style="align-self:end"><button class="btn">গ্রাহক সংরক্ষণ</button></div>
+</form></div>
+<div class="panel"><h2>গ্রাহক তালিকা</h2><div class="tablewrap"><table><thead><tr><th>ID</th><th>নাম</th><th>মোবাইল</th><th>প্যাকেজ</th><th>অবস্থা</th><th>কাজ</th></tr></thead><tbody id="customerRows"></tbody></table></div></div>
+</div>
+<div id="packages" class="adminTab hidden">
+<div class="panel"><h2>ইন্টারনেট প্যাকেজ</h2><div class="tablewrap"><table><thead><tr><th>স্পিড</th><th>মাসিক মূল্য</th></tr></thead><tbody id="packageRows"></tbody></table></div><div class="notice">বর্তমান প্যাকেজের মূল্য আগের ওয়েবসাইটের তথ্য অনুযায়ী রাখা হয়েছে। মূল্য পরিবর্তন করতে কোড/ডাটাবেস আপডেট করতে হবে।</div></div>
+</div>
+<div id="billing" class="adminTab hidden">
+<div class="panel"><h2>নতুন মাসিক বিল তৈরি</h2><form id="billForm" class="row"><div class="field"><label>গ্রাহক</label><select id="billCustomer" required></select></div><div class="field"><label>বিলের মাস</label><input id="billMonth" type="month" required></div><div class="field"><label>টাকার পরিমাণ</label><input id="billAmount" type="number" min="0" required></div><div class="field" style="align-self:end"><button class="btn">বিল তৈরি</button></div></form></div>
+<div class="panel"><h2>পেমেন্ট যাচাই ও এন্ট্রি</h2><form id="paymentForm" class="row"><div class="field"><label>গ্রাহক</label><select id="paymentCustomer" required></select></div><div class="field"><label>বিল নির্বাচন</label><select id="paymentBill" required></select></div><div class="field"><label>পরিশোধের পরিমাণ</label><input id="paymentAmount" type="number" min="1" required></div><div class="field"><label>মাধ্যম</label><select id="paymentMethod"><option>bKash</option><option>Nagad</option><option>Cash</option></select></div><div class="field"><label>Transaction ID / রেফারেন্স</label><input id="transactionId" placeholder="ঐচ্ছিক"></div><div class="field" style="align-self:end"><button class="btn green">পেমেন্ট নিশ্চিত করুন</button></div></form><div class="notice">এখানে পেমেন্ট ম্যানুয়ালি যাচাই করে নিশ্চিত করতে হবে। এটি bKash/Nagad-এর স্বয়ংক্রিয় API সংযোগ নয়।</div></div>
+<div class="panel"><h2>সব বিল</h2><div id="allBills"></div></div>
+</div>
+</section>
+
+<section id="customerView" class="hidden">
+<div class="row"><div><h1 style="margin:0;color:var(--navy)">Customer Portal</h1><div class="muted">আপনার ইন্টারনেট অ্যাকাউন্ট</div></div><button class="btn secondary right" onclick="logout()">Logout</button></div>
+<div class="customerhero"><div class="sub">স্বাগতম</div><h2 id="custWelcome">গ্রাহক</h2><div id="custInfo"></div></div>
+<div class="grid"><div class="card stat"><span class="muted">মাসিক প্যাকেজ</span><b id="custPackage">—</b></div><div class="card stat"><span class="muted">মাসিক বিল</span><b id="custPrice">৳0</b></div><div class="card stat"><span class="muted">মোট বকেয়া</span><b id="custDue">৳0</b></div><div class="card stat"><span class="muted">সংযোগ</span><b id="custStatus">—</b></div></div>
+<div class="panel"><h2>আপনার বিলের তালিকা</h2><div id="custBills"></div></div>
+<div class="panel"><h2>বিল পরিশোধের নির্দেশনা</h2><p>নিচের নম্বরে Send Money করার পর Transaction ID সংরক্ষণ করুন।</p><p><b>bKash / Nagad: 01775485757</b></p><p>নাম, মোবাইল নম্বর, প্যাকেজ ও Transaction ID WhatsApp-এ পাঠান। টাকা যাচাই করার পর কর্তৃপক্ষ পেমেন্ট নিশ্চিত করবে।</p><a class="btn green" href="https://wa.me/8801775485757" target="_blank" rel="noopener">WhatsApp-এ তথ্য পাঠান</a></div>
+</section>
+</main>
+<footer class="foot">© 2026 মিয়াজী ইন্টারনেট · গজারিয়া মিয়াজী বাড়ী, ভৈরব, কিশোরগঞ্জ · 01775-485757</footer>
+<script>
+const PACKAGES=[{speed:25,price:500},{speed:30,price:600},{speed:35,price:700},{speed:40,price:800},{speed:45,price:900},{speed:50,price:1000},{speed:60,price:1200},{speed:70,price:1400},{speed:80,price:1500}];
+const seed={customers:[{id:"MI1001",name:"ডেমো গ্রাহক",phone:"01700000000",address:"গজারিয়া, ভৈরব",package:25,pass:"1234",status:"active"}],bills:[],payments:[]};
+let db=loadDB(),mode="admin",currentCustomer=null;
+function loadDB(){try{return JSON.parse(localStorage.getItem("miaziBillingDB"))||structuredClone(seed)}catch(e){return JSON.parse(JSON.stringify(seed))}}
+function save(){localStorage.setItem("miaziBillingDB",JSON.stringify(db))}
+function money(n){return "৳"+Number(n||0).toLocaleString("en-BD")}
+function pkg(speed){return PACKAGES.find(p=>p.speed==speed)||PACKAGES[0]}
+function setMode(m){mode=m;document.getElementById("adminMode").classList.toggle("active",m==="admin");document.getElementById("customerMode").classList.toggle("active",m==="customer");document.getElementById("userLabel").textContent=m==="admin"?"Admin Username":"Customer ID";document.getElementById("username").placeholder=m==="admin"?"admin":"MI1001"}
+function logout(){currentCustomer=null;["adminView","customerView"].forEach(id=>document.getElementById(id).classList.add("hidden"));document.getElementById("loginView").classList.remove("hidden");document.getElementById("loginForm").reset()}
+document.getElementById("loginForm").addEventListener("submit",e=>{e.preventDefault();let u=username.value.trim(),p=password.value;loginError.textContent="";
+if(mode==="admin"&&u==="admin"&&p==="Miazi@2026"){loginView.classList.add("hidden");adminView.classList.remove("hidden");renderAdmin()}
+else if(mode==="customer"){let c=db.customers.find(x=>x.id.toLowerCase()===u.toLowerCase()&&x.pass===p);if(c){currentCustomer=c;loginView.classList.add("hidden");customerView.classList.remove("hidden");renderCustomer()}else loginError.textContent="Customer ID বা Password সঠিক নয়।"}
+else loginError.textContent="Username বা Password সঠিক নয়।";});
+function renderAdmin(){let active=db.customers.filter(c=>c.status==="active").length;totalCustomers.textContent=db.customers.length;activeCustomers.textContent=active;totalDue.textContent=money(db.bills.reduce((s,b)=>s+Math.max(0,b.amount-b.paid),0));totalPaid.textContent=money(db.payments.reduce((s,p)=>s+p.amount,0));
+customerPackage.innerHTML=PACKAGES.map(p=>`<option value="${p.speed}">${p.speed} Mbps — ${money(p.price)}</option>`).join("");packageRows.innerHTML=PACKAGES.map(p=>`<tr><td>${p.speed} Mbps</td><td>${money(p.price)} / মাস</td></tr>`).join("");
+customerRows.innerHTML=db.customers.map(c=>`<tr><td>${esc(c.id)}</td><td>${esc(c.name)}</td><td>${esc(c.phone)}</td><td>${c.package} Mbps</td><td><span class="pill ${c.status==="active"?"":"off"}">${c.status==="active"?"সক্রিয়":"বন্ধ"}</span></td><td><button class="btn small secondary" onclick="toggleCustomer('${esc(c.id)}')">${c.status==="active"?"বন্ধ করুন":"চালু করুন"}</button></td></tr>`).join("");
+let opts=db.customers.map(c=>`<option value="${esc(c.id)}">${esc(c.name)} (${esc(c.id)})</option>`).join("");billCustomer.innerHTML=opts;paymentCustomer.innerHTML=opts;updatePaymentBills();allBills.innerHTML=billsTable();recentBills.innerHTML=billsTable(true)}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+document.getElementById("customerForm").addEventListener("submit",e=>{e.preventDefault();let f=new FormData(e.target),id=f.get("id").trim();if(db.customers.some(c=>c.id.toLowerCase()===id.toLowerCase()))return alert("এই Customer ID আগে থেকেই আছে।");db.customers.push({id,name:f.get("name"),phone:f.get("phone"),address:f.get("address"),package:Number(f.get("package")),pass:f.get("pass"),status:f.get("status")});save();e.target.reset();renderAdmin();alert("গ্রাহক যুক্ত হয়েছে।")});
+function toggleCustomer(id){let c=db.customers.find(x=>x.id===id);c.status=c.status==="active"?"off":"active";save();renderAdmin()}
+document.getElementById("billForm").addEventListener("submit",e=>{e.preventDefault();let c=db.customers.find(x=>x.id===billCustomer.value),month=billMonth.value,amount=Number(billAmount.value);if(!c||!month||amount<0)return; if(db.bills.some(b=>b.customerId===c.id&&b.month===month))return alert("এই মাসের বিল আগে তৈরি হয়েছে।");db.bills.push({id:"INV"+Date.now().toString().slice(-7),customerId:c.id,month,amount,paid:0,status:"due"});save();renderAdmin();e.target.reset();alert("বিল তৈরি হয়েছে।")});
+paymentCustomer.addEventListener("change",updatePaymentBills);
+function updatePaymentBills(){let id=paymentCustomer.value,bs=db.bills.filter(b=>b.customerId===id&&b.paid<b.amount);paymentBill.innerHTML=bs.map(b=>`<option value="${b.id}">${b.month} · বাকি ${money(b.amount-b.paid)}</option>`).join("")||'<option value="">বকেয়া বিল নেই</option>';let b=bs[0];paymentAmount.value=b?b.amount-b.paid:""}
+document.getElementById("paymentForm").addEventListener("submit",e=>{e.preventDefault();let b=db.bills.find(x=>x.id===paymentBill.value),amount=Number(paymentAmount.value);if(!b||amount<=0||amount>b.amount-b.paid)return alert("বিল বা টাকার পরিমাণ যাচাই করুন।");db.payments.push({billId:b.id,customerId:b.customerId,amount,method:paymentMethod.value,transactionId:transactionId.value,date:new Date().toISOString()});b.paid+=amount;b.status=b.paid>=b.amount?"paid":"partial";save();renderAdmin();e.target.reset();updatePaymentBills();alert("পেমেন্ট এন্ট্রি সম্পন্ন হয়েছে।")});
+function billsTable(recent=false){let list=recent?[...db.bills].reverse().slice(0,5):[...db.bills].reverse();if(!list.length)return '<div class="empty">এখনো কোনো বিল তৈরি হয়নি।</div>';return `<div class="tablewrap"><table><thead><tr><th>Invoice</th><th>গ্রাহক</th><th>মাস</th><th>বিল</th><th>পরিশোধ</th><th>বাকি</th><th>অবস্থা</th></tr></thead><tbody>${list.map(b=>{let c=db.customers.find(x=>x.id===b.customerId)||{};return `<tr><td>${b.id}</td><td>${esc(c.name||b.customerId)}</td><td>${b.month}</td><td>${money(b.amount)}</td><td>${money(b.paid)}</td><td>${money(b.amount-b.paid)}</td><td><span class="pill ${b.paid>=b.amount?"":"due"}">${b.paid>=b.amount?"পরিশোধিত":b.paid?"আংশিক":"বকেয়া"}</span></td></tr>`}).join("")}</tbody></table></div>`}
+function renderCustomer(){let c=db.customers.find(x=>x.id===currentCustomer.id);currentCustomer=c;let bs=db.bills.filter(b=>b.customerId===c.id);custWelcome.textContent=c.name;custInfo.textContent=`Customer ID: ${c.id} · মোবাইল: ${c.phone} · ঠিকানা: ${c.address}`;custPackage.textContent=c.package+" Mbps";custPrice.textContent=money(pkg(c.package).price);custDue.textContent=money(bs.reduce((s,b)=>s+b.amount-b.paid,0));custStatus.textContent=c.status==="active"?"সক্রিয়":"বন্ধ";custBills.innerHTML=bs.length?`<div class="tablewrap"><table><thead><tr><th>মাস</th><th>বিল</th><th>পরিশোধ</th><th>বাকি</th><th>অবস্থা</th></tr></thead><tbody>${bs.map(b=>`<tr><td>${b.month}</td><td>${money(b.amount)}</td><td>${money(b.paid)}</td><td>${money(b.amount-b.paid)}</td><td>${b.paid>=b.amount?"পরিশোধিত":b.paid?"আংশিক":"বকেয়া"}</td></tr>`).join("")}</tbody></table></div>`:'<div class="empty">আপনার নামে এখনো কোনো বিল তৈরি হয়নি।</div>'}
+document.querySelectorAll("#adminTabs .tab").forEach(btn=>btn.addEventListener("click",()=>{document.querySelectorAll("#adminTabs .tab").forEach(x=>x.classList.remove("active"));btn.classList.add("active");document.querySelectorAll(".adminTab").forEach(x=>x.classList.add("hidden"));document.getElementById(btn.dataset.tab).classList.remove("hidden");if(btn.dataset.tab==="billing")renderAdmin()}));
+billMonth.value=new Date().toISOString().slice(0,7);
+</script>
+</body></html>
