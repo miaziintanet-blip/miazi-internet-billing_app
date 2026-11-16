@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b6b53">
+<title>মিয়াজী ইন্টারনেট | Admin Billing Panel</title>
+<style>
+:root{--green:#0b6b53;--green2:#0f8a68;--ink:#17221f;--muted:#687771;--line:#e5ece8;--bg:#f4f7f5;--white:#fff;--red:#c0392b;--amber:#a96808;--blue:#245db5;--shadow:0 8px 24px rgba(17,54,42,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Bengali","Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh}.topbar{height:66px;background:var(--white);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:5}.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:18px}.logo{width:39px;height:39px;border-radius:12px;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:900}.brand small{display:block;font-size:11px;color:var(--muted);font-weight:500}.top-actions{display:flex;align-items:center;gap:10px}.admin-pill{font-size:13px;color:var(--green);background:#e8f5ef;padding:8px 12px;border-radius:30px}.layout{display:grid;grid-template-columns:230px 1fr;max-width:1500px;margin:auto}.sidebar{padding:22px 14px;border-right:1px solid var(--line);min-height:calc(100vh - 66px);background:#fbfdfc}.nav{display:grid;gap:7px}.nav button{border:0;background:transparent;text-align:left;padding:12px 14px;border-radius:10px;color:#50615a;font-weight:650}.nav button.active,.nav button:hover{background:#e8f5ef;color:var(--green)}.side-note{margin:28px 8px 0;padding:13px;background:#f0f6f2;border-radius:12px;color:var(--muted);font-size:12px;line-height:1.6}.main{padding:26px;min-width:0}.page-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px}.page-head h1{font-size:24px;margin:0 0 5px}.sub{color:var(--muted);font-size:13px}.btn{border:0;border-radius:9px;padding:10px 15px;font-weight:700;background:var(--green);color:white}.btn:hover{background:var(--green2)}.btn.secondary{background:#eaf3ef;color:var(--green)}.btn.light{background:#fff;color:var(--ink);border:1px solid var(--line)}.btn.danger{background:#fff0ee;color:var(--red)}.btn.small{padding:7px 10px;font-size:12px}.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:20px}.stat{background:var(--white);padding:18px;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}.stat-label{font-size:13px;color:var(--muted)}.stat-value{font-size:27px;font-weight:800;margin-top:8px}.stat-foot{font-size:11px;color:var(--muted);margin-top:4px}.panel{background:var(--white);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:18px;overflow:hidden}.panel-head{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px}.panel-head h2{font-size:16px;margin:0}.panel-body{padding:18px}.toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.field{width:100%;padding:10px 11px;border:1px solid #dbe5df;border-radius:8px;background:#fff;color:var(--ink);outline:none}.field:focus{border-color:var(--green2);box-shadow:0 0 0 3px #0f8a6818}.search{max-width:310px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;white-space:nowrap}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid #edf1ee;font-size:13px}th{font-size:12px;color:var(--muted);font-weight:700;background:#fbfcfb}tbody tr:last-child td{border-bottom:0}.badge{display:inline-block;padding:5px 9px;border-radius:30px;font-size:11px;font-weight:750}.paid,.active-b{background:#e7f6ed;color:#187044}.due,.partial{background:#fff3dc;color:#94600b}.suspended,.unpaid{background:#ffeded;color:#b33232}.empty{text-align:center;color:var(--muted);padding:30px 15px;font-size:13px}.hidden{display:none!important}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.form-group{display:grid;gap:6px}.form-group label{font-size:12px;font-weight:700;color:#53635c}.form-group.full{grid-column:1/-1}.modal-backdrop{position:fixed;inset:0;background:#0d211b77;z-index:20;display:grid;place-items:center;padding:15px}.modal{width:min(560px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:16px;box-shadow:0 20px 60px #0003}.modal-head,.modal-foot{padding:16px 19px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.modal-head h2{margin:0;font-size:18px}.modal-content{padding:19px}.modal-foot{border:0;border-top:1px solid var(--line);justify-content:flex-end;gap:9px}.close{border:0;background:#f0f4f1;border-radius:8px;width:32px;height:32px;font-size:19px}.quick-actions{display:flex;gap:9px;flex-wrap:wrap}.hint{font-size:12px;color:var(--muted);line-height:1.6}.mobile-nav{display:none}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#173b2e;color:#fff;padding:11px 17px;border-radius:10px;z-index:40;font-size:13px;box-shadow:var(--shadow)}.money{font-variant-numeric:tabular-nums}.footer{text-align:center;color:#8a9791;font-size:11px;padding:12px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{display:none}.main{padding:18px 14px 90px}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.topbar{padding:0 14px}.mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);z-index:10;justify-content:space-around;padding:7px 3px calc(7px + env(safe-area-inset-bottom))}.mobile-nav button{border:0;background:transparent;color:#64736c;font-size:11px;padding:5px 9px;border-radius:9px}.mobile-nav button.active{color:var(--green);background:#e8f5ef}.mobile-nav span{display:block;font-size:18px;margin-bottom:2px}.page-head{align-items:flex-start}.page-head h1{font-size:21px}.admin-pill{display:none}}
+@media(max-width:480px){.cards{gap:9px}.stat{padding:13px}.stat-value{font-size:22px}.form-grid{grid-template-columns:1fr}.form-group.full{grid-column:auto}.page-head .btn{padding:9px 10px;font-size:12px}.panel-body{padding:13px}.topbar{height:60px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+  <div class="brand"><div class="logo">মি</div><div>মিয়াজী ইন্টারনেট<small>Admin Billing Panel</small></div></div>
+  <div class="top-actions"><span class="admin-pill">● Admin Panel</span><button class="btn secondary small" id="backupBtn">ডেটা ব্যাকআপ</button></div>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <nav class="nav" id="sideNav">
+      <button class="active" data-page="dashboard">▦　ড্যাশবোর্ড</button>
+      <button data-page="customers">♙　গ্রাহক তালিকা</button>
+      <button data-page="bills">▤　মাসিক বিল</button>
+      <button data-page="payments">৳　পেমেন্ট হিসাব</button>
+    </nav>
+    <div class="side-note">মিয়াজী ইন্টারনেট<br>গ্রাহক ও মাসিক বিল ব্যবস্থাপনা<br><br>প্রাথমিক সংস্করণ · ১.০</div>
+  </aside>
+  <main class="main">
+    <section id="page-dashboard">
+      <div class="page-head"><div><h1>ড্যাশবোর্ড</h1><div class="sub" id="todayText">আজকের হিসাব</div></div><button class="btn" onclick="openCustomerModal()">＋ নতুন গ্রাহক</button></div>
+      <div class="cards">
+        <div class="stat"><div class="stat-label">মোট গ্রাহক</div><div class="stat-value" id="totalCustomers">০</div><div class="stat-foot">সকল নিবন্ধিত গ্রাহক</div></div>
+        <div class="stat"><div class="stat-label">চলতি মাসে আদায়</div><div class="stat-value money" id="collected">৳০</div><div class="stat-foot">রেকর্ড করা পেমেন্ট</div></div>
+        <div class="stat"><div class="stat-label">বকেয়া বিল</div><div class="stat-value money" id="dueAmount">৳০</div><div class="stat-foot">সকল মাসের অনাদায়ী টাকা</div></div>
+        <div class="stat"><div class="stat-label">বকেয়া গ্রাহক</div><div class="stat-value" id="dueCustomers">০</div><div class="stat-foot">যাদের বিল বাকি আছে</div></div>
+      </div>
+      <div class="panel"><div class="panel-head"><h2>দ্রুত কাজ</h2></div><div class="panel-body quick-actions"><button class="btn" onclick="openCustomerModal()">＋ গ্রাহক যোগ করুন</button><button class="btn secondary" onclick="generateBills()">চলতি মাসের বিল তৈরি</button><button class="btn light" onclick="showPage('payments')">পেমেন্ট দেখুন</button></div></div>
+      <div class="panel"><div class="panel-head"><h2>সাম্প্রতিক বিল</h2><button class="btn light small" onclick="showPage('bills')">সব বিল</button></div><div class="table-wrap"><table><thead><tr><th>গ্রাহক</th><th>মাস</th><th>বিল</th><th>পরিশোধ</th><th>অবস্থা</th></tr></thead><tbody id="recentBills"></tbody></table></div><div id="recentEmpty" class="empty">এখনো কোনো বিল তৈরি হয়নি। আগে গ্রাহক যোগ করুন।</div></div>
+    </section>
+    <section id="page-customers" class="hidden">
+      <div class="page-head"><div><h1>গ্রাহক তালিকা</h1><div class="sub">গ্রাহকের তথ্য যোগ ও পরিচালনা করুন</div></div><button class="btn" onclick="openCustomerModal()">＋ নতুন গ্রাহক</button></div>
+      <div class="panel"><div class="panel-head"><h2>সকল গ্রাহক</h2><input id="customerSearch" class="field search" placeholder="নাম বা মোবাইল দিয়ে খুঁজুন…"></div><div class="table-wrap"><table><thead><tr><th>নাম</th><th>মোবাইল</th><th>প্যাকেজ</th><th>মাসিক বিল</th><th>অবস্থা</th><th>কাজ</th></tr></thead><tbody id="customerRows"></tbody></table></div><div id="customerEmpty" class="empty">কোনো গ্রাহক নেই। “নতুন গ্রাহক” চাপ দিয়ে শুরু করুন।</div></div>
+    </section>
+    <section id="page-bills" class="hidden">
+      <div class="page-head"><div><h1>মাসিক বিল</h1><div class="sub">গ্রাহকদের মাসিক বিল তৈরি ও হিসাব দেখুন</div></div><button class="btn" onclick="generateBills()">＋ বিল তৈরি</button></div>
+      <div class="panel"><div class="panel-head"><h2>বিলের তালিকা</h2><div class="toolbar"><input type="month" id="billMonth" class="field" style="width:auto"></div></div><div class="table-wrap"><table><thead><tr><th>গ্রাহক</th><th>মাস</th><th>বিল</th><th>পরিশোধ</th><th>বকেয়া</th><th>অবস্থা</th><th>কাজ</th></tr></thead><tbody id="billRows"></tbody></table></div><div id="billEmpty" class="empty">এই মাসের কোনো বিল নেই। “বিল তৈরি” চাপুন।</div></div>
+    </section>
+    <section id="page-payments" class="hidden">
+      <div class="page-head"><div><h1>পেমেন্ট হিসাব</h1><div class="sub">গ্রাহকের টাকা গ্রহণের রেকর্ড রাখুন</div></div><button class="btn" onclick="openPaymentModal()">＋ পেমেন্ট নিন</button></div>
+      <div class="panel"><div class="panel-head"><h2>পেমেন্ট তালিকা</h2></div><div class="table-wrap"><table><thead><tr><th>তারিখ</th><th>গ্রাহক</th><th>মাস</th><th>পরিমাণ</th><th>মাধ্যম</th><th>Trx ID</th></tr></thead><tbody id="paymentRows"></tbody></table></div><div id="paymentEmpty" class="empty">এখনো কোনো পেমেন্ট রেকর্ড নেই।</div></div>
+    </section>
+    <div class="footer">মিয়াজী ইন্টারনেট · Admin Billing Panel · প্রাথমিক সংস্করণ</div>
+  </main>
+</div>
+<nav class="mobile-nav" id="mobileNav">
+  <button class="active" data-page="dashboard"><span>▦</span>হোম</button><button data-page="customers"><span>♙</span>গ্রাহক</button><button data-page="bills"><span>▤</span>বিল</button><button data-page="payments"><span>৳</span>পেমেন্ট</button>
+</nav>
+</div>
+<div id="modalRoot"></div><div id="toast" class="toast hidden"></div>
+<script>
+const KEY='miaziInternetBillingV1';
+let db=loadDB();
+function loadDB(){try{return JSON.parse(localStorage.getItem(KEY))||{customers:[],bills:[],payments:[]}}catch(e){return {customers:[],bills:[],payments:[]}}}
+function save(){localStorage.setItem(KEY,JSON.stringify(db));render()}
+function money(n){return '৳'+Number(n||0).toLocaleString('en-BD')}
+function bn(n){return Number(n||0).toLocaleString('bn-BD')}
+function monthNow(){return new Date().toISOString().slice(0,7)}
+function monthLabel(m){if(!m)return '';let [y,mo]=m.split('-');return new Date(+y,+mo-1,1).toLocaleDateString('bn-BD',{month:'long',year:'numeric'})}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),2600)}
+function showPage(p){document.querySelectorAll('main section').forEach(s=>s.classList.add('hidden'));document.getElementById('page-'+p).classList.remove('hidden');document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===p));window.scrollTo(0,0)}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+document.getElementById('todayText').textContent=new Date().toLocaleDateString('bn-BD',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+document.getElementById('billMonth').value=monthNow();
+document.getElementById('billMonth').addEventListener('change',renderBills);
+document.getElementById('customerSearch').addEventListener('input',renderCustomers);
+function statusFor(b){return b.paid>=b.amount?'পরিশোধিত':b.paid>0?'আংশিক':'বকেয়া'}
+function statusClass(s){return s==='পরিশোধিত'?'paid':s==='আংশিক'?'partial':'unpaid'}
+function render(){
+ document.getElementById('totalCustomers').textContent=bn(db.customers.length);
+ let cm=monthNow(),col=db.payments.filter(p=>p.month===cm).reduce((a,p)=>a+p.amount,0);
+ document.getElementById('collected').textContent=money(col);
+ let due=db.bills.reduce((a,b)=>a+Math.max(0,b.amount-b.paid),0);
+ document.getElementById('dueAmount').textContent=money(due);
+ let dueIds=new Set(db.bills.filter(b=>b.paid<b.amount).map(b=>b.customerId));
+ document.getElementById('dueCustomers').textContent=bn(dueIds.size);
+ renderCustomers();renderBills();renderPayments();renderRecent();
+}
+function renderCustomers(){
+ let q=(document.getElementById('customerSearch')?.value||'').toLowerCase();
+ let rows=db.customers.filter(c=>(c.name+' '+c.phone).toLowerCase().includes(q));
+ document.getElementById('customerRows').innerHTML=rows.map(c=>`<tr><td><b>${esc(c.name)}</b><br><span class="sub">${esc(c.address||'')}</span></td><td>${esc(c.phone)}</td><td>${esc(c.package||'—')}</td><td>${money(c.fee)}</td><td><span class="badge ${c.status==='সক্রিয়'?'active-b':'suspended'}">${c.status}</span></td><td><button class="btn light small" onclick="editCustomer('${c.id}')">সম্পাদনা</button></td></tr>`).join('');
+ document.getElementById('customerEmpty').classList.toggle('hidden',rows.length>0);
+}
+function renderBills(){
+ let m=document.getElementById('billMonth').value||monthNow(),rows=db.bills.filter(b=>b.month===m).sort((a,b)=>b.createdAt-a.createdAt);
+ document.getElementById('billRows').innerHTML=rows.map(b=>{let c=db.customers.find(x=>x.id===b.customerId),due=Math.max(0,b.amount-b.paid),s=statusFor(b);return `<tr><td>${esc(c?.name||'মুছে ফেলা গ্রাহক')}<br><span class="sub">${esc(c?.phone||'')}</span></td><td>${monthLabel(b.month)}</td><td>${money(b.amount)}</td><td>${money(b.paid)}</td><td>${money(due)}</td><td><span class="badge ${statusClass(s)}">${s}</span></td><td>${due>0?`<button class="btn secondary small" onclick="openPaymentModal('${b.id}')">পেমেন্ট নিন</button>`:'—'}</td></tr>`}).join('');
+ document.getElementById('billEmpty').classList.toggle('hidden',rows.length>0);
+}
+function renderPayments(){
+ let rows=[...db.payments].sort((a,b)=>b.date.localeCompare(a.date));
+ document.getElementById('paymentRows').innerHTML=rows.map(p=>{let c=db.customers.find(x=>x.id===p.customerId);return `<tr><td>${esc(p.date)}</td><td>${esc(c?.name||'গ্রাহক')}</td><td>${monthLabel(p.month)}</td><td><b>${money(p.amount)}</b></td><td>${esc(p.method)}</td><td>${esc(p.trx||'—')}</td></tr>`}).join('');
+ document.getElementById('paymentEmpty').classList.toggle('hidden',rows.length>0);
+}
+function renderRecent(){
+ let rows=[...db.bills].sort((a,b)=>b.createdAt-a.createdAt).slice(0,6);
+ document.getElementById('recentBills').innerHTML=rows.map(b=>{let c=db.customers.find(x=>x.id===b.customerId),s=statusFor(b);return `<tr><td>${esc(c?.name||'গ্রাহক')}</td><td>${monthLabel(b.month)}</td><td>${money(b.amount)}</td><td>${money(b.paid)}</td><td><span class="badge ${statusClass(s)}">${s}</span></td></tr>`}).join('');
+ document.getElementById('recentEmpty').classList.toggle('hidden',rows.length>0);
+}
+function modal(title,content,submitText,onSubmit){
+ document.getElementById('modalRoot').innerHTML=`<div class="modal-backdrop" id="backdrop"><div class="modal"><div class="modal-head"><h2>${title}</h2><button class="close" onclick="closeModal()">×</button></div><form id="modalForm"><div class="modal-content">${content}</div><div class="modal-foot"><button type="button" class="btn light" onclick="closeModal()">বাতিল</button><button class="btn" type="submit">${submitText}</button></div></form></div></div>`;
+ document.getElementById('backdrop').addEventListener('click',e=>{if(e.target.id==='backdrop')closeModal()});
+ document.getElementById('modalForm').addEventListener('submit',e=>{e.preventDefault();onSubmit(new FormData(e.target))});
+}
+function closeModal(){document.getElementById('modalRoot').innerHTML=''}
+function openCustomerModal(c=null){
+ let edit=!!c;
+ modal(edit?'গ্রাহকের তথ্য সম্পাদনা':'নতুন গ্রাহক যোগ করুন',`
+ <div class="form-grid">
+ <div class="form-group"><label>গ্রাহকের নাম *</label><input class="field" name="name" required value="${esc(c?.name||'')}" placeholder="পূর্ণ নাম"></div>
+ <div class="form-group"><label>মোবাইল নম্বর *</label><input class="field" name="phone" required value="${esc(c?.phone||'')}" placeholder="01XXXXXXXXX" inputmode="tel"></div>
+ <div class="form-group"><label>ইন্টারনেট প্যাকেজ</label><input class="field" name="package" value="${esc(c?.package||'')}" placeholder="যেমন: 10 Mbps"></div>
+ <div class="form-group"><label>মাসিক বিল (টাকা) *</label><input class="field" name="fee" type="number" min="0" required value="${esc(c?.fee??'')}" placeholder="500"></div>
+ <div class="form-group full"><label>ঠিকানা</label><input class="field" name="address" value="${esc(c?.address||'')}" placeholder="গ্রাম/এলাকা"></div>
+ <div class="form-group"><label>সংযোগের অবস্থা</label><select class="field" name="status"><option ${!c||c.status==='সক্রিয়'?'selected':''}>সক্রিয়</option><option ${c?.status==='বন্ধ'?'selected':''}>বন্ধ</option></select></div>
+ </div>`,edit?'আপডেট করুন':'সংরক্ষণ করুন',f=>{
+ let obj={id:c?.id||('C'+Date.now()),name:f.get('name').trim(),phone:f.get('phone').trim(),package:f.get('package').trim(),fee:Number(f.get('fee')),address:f.get('address').trim(),status:f.get('status')};
+ if(!obj.name||!obj.phone||obj.fee<0){toast('সঠিক তথ্য দিন');return}
+ if(edit)db.customers=db.customers.map(x=>x.id===c.id?obj:x);else db.customers.push(obj);
+ closeModal();save();toast(edit?'গ্রাহকের তথ্য আপডেট হয়েছে':'নতুন গ্রাহক যোগ হয়েছে');
+ });
+}
+function editCustomer(id){let c=db.customers.find(x=>x.id===id);if(c)openCustomerModal(c)}
+function generateBills(){
+ let m=document.getElementById('billMonth')?.value||monthNow();
+ let active=db.customers.filter(c=>c.status==='সক্রিয়');
+ if(!active.length){toast('আগে অন্তত একজন সক্রিয় গ্রাহক যোগ করুন');return}
+ let added=0;
+ active.forEach(c=>{if(!db.bills.some(b=>b.customerId===c.id&&b.month===m)){db.bills.push({id:'B'+Date.now()+Math.random().toString(16).slice(2,6),customerId:c.id,month:m,amount:Number(c.fee),paid:0,createdAt:Date.now()});added++}});
+ save();toast(added?bn(added)+'টি বিল তৈরি হয়েছে':'এই মাসের বিল আগে থেকেই তৈরি আছে');
+}
+function openPaymentModal(billId=null){
+ if(!db.customers.length){toast('আগে গ্রাহক যোগ করুন');return}
+ let bill=billId?db.bills.find(b=>b.id===billId):null;
+ let opts=db.customers.map(c=>`<option value="${c.id}" ${bill?.customerId===c.id?'selected':''}>${esc(c.name)} — ${esc(c.phone)}</option>`).join('');
+ let month=bill?.month||monthNow(),due=bill?Math.max(0,bill.amount-bill.paid):'';
+ modal('পেমেন্ট গ্রহণ',`
+ <div class="form-grid">
+ <div class="form-group full"><label>গ্রাহক *</label><select class="field" name="customerId" required>${opts}</select></div>
+ <div class="form-group"><label>বিলের মাস *</label><input class="field" type="month" name="month" value="${month}" required></div>
+ <div class="form-group"><label>টাকার পরিমাণ *</label><input class="field" type="number" min="1" name="amount" value="${due}" required placeholder="500"></div>
+ <div class="form-group"><label>পেমেন্ট মাধ্যম</label><select class="field" name="method"><option>নগদ</option><option>bKash</option><option>Nagad</option><option>ব্যাংক</option></select></div>
+ <div class="form-group"><label>Transaction ID</label><input class="field" name="trx" placeholder="প্রযোজ্য হলে লিখুন"></div>
+ <div class="form-group full"><label>পেমেন্টের তারিখ</label><input class="field" type="date" name="date" value="${new Date().toISOString().slice(0,10)}" required></div>
+ </div><p class="hint">পেমেন্ট যোগ করার আগে টাকা হাতে/অ্যাকাউন্টে এসেছে কি না যাচাই করুন।</p>`, 'পেমেন্ট সংরক্ষণ',f=>{
+ let cid=f.get('customerId'),m=f.get('month'),amount=Number(f.get('amount'));
+ if(!cid||!m||amount<=0){toast('সঠিক তথ্য দিন');return}
+ let b=db.bills.find(x=>x.customerId===cid&&x.month===m);
+ if(!b){let c=db.customers.find(x=>x.id===cid);b={id:'B'+Date.now(),customerId:cid,month:m,amount:Number(c.fee),paid:0,createdAt:Date.now()};db.bills.push(b)}
+ if(amount>Math.max(0,b.amount-b.paid)){toast('পেমেন্টের পরিমাণ বকেয়ার চেয়ে বেশি');return}
+ b.paid+=amount;
+ db.payments.push({id:'P'+Date.now(),customerId:cid,month:m,amount,method:f.get('method'),trx:f.get('trx').trim(),date:f.get('date')});
+ closeModal();save();toast('পেমেন্ট রেকর্ড সংরক্ষণ হয়েছে');
+ });
+}
+document.getElementById('backupBtn').addEventListener('click',()=>{
+ let blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='miazi-internet-backup-'+monthNow()+'.json';a.click();URL.revokeObjectURL(url);toast('ব্যাকআপ ফাইল ডাউনলোড হয়েছে');
+});
+render();
+</script>
+</body>
+</html>
